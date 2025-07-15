@@ -122,14 +122,54 @@ export default function Generate() {
             ))}
           </div>
           {results.filter(r => r.platform === activeTab).map((gig, idx) => (
-            <div key={idx} className="mb-8">
-              <h3 className="text-2xl font-bold mb-2 text-indigo-700">{gig.title}</h3>
+            <div key={idx} className="mb-8 p-6 rounded-lg border border-gray-200 shadow-md bg-gray-50">
+              <h3 className="text-2xl font-bold mb-1 text-indigo-700">{gig.title}</h3>
+              {gig.recommended_gig_type && (
+                <div className="text-md font-semibold text-indigo-500 mb-2">Recommended Gig Type: {gig.recommended_gig_type}</div>
+              )}
               <p className="mb-3 whitespace-pre-line text-gray-800 text-lg">{gig.description}</p>
               <div className="flex items-center gap-2 mb-3">
                 <span className="font-semibold">Pricing:</span> <span>{gig.pricing}</span>
               </div>
+              {/* Platform-specific fields */}
+              {gig.platform_specific_fields && (
+                <div className="mb-3">
+                  <span className="block font-semibold text-gray-700 mb-1">Platform Details:</span>
+                  {/* Fiverr: Show packages */}
+                  {gig.platform === 'Fiverr' && (
+                    <div className="grid md:grid-cols-3 gap-4">
+                      {['basic_package', 'standard_package', 'premium_package'].map(pkg => gig.platform_specific_fields[pkg] && (
+                        <div key={pkg} className="bg-white border rounded p-4 shadow-sm">
+                          <div className="font-bold text-indigo-600 mb-1 capitalize">{pkg.replace('_', ' ')}</div>
+                          <div className="text-gray-800 text-sm whitespace-pre-line">{gig.platform_specific_fields[pkg]}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {/* Upwork: Show proposal */}
+                  {gig.platform === 'Upwork' && gig.platform_specific_fields.proposal && (
+                    <div className="bg-white border rounded p-4 shadow-sm">
+                      <div className="font-bold text-indigo-600 mb-1">Proposal</div>
+                      <div className="text-gray-800 text-sm whitespace-pre-line">{gig.platform_specific_fields.proposal}</div>
+                    </div>
+                  )}
+                  {/* 99designs: Show contest brief */}
+                  {gig.platform === '99designs' && gig.platform_specific_fields.contest_brief && (
+                    <div className="bg-white border rounded p-4 shadow-sm">
+                      <div className="font-bold text-indigo-600 mb-1">Contest Brief</div>
+                      <div className="text-gray-800 text-sm whitespace-pre-line">{gig.platform_specific_fields.contest_brief}</div>
+                    </div>
+                  )}
+                  {/* Generic fallback for other platforms */}
+                  {!(gig.platform === 'Fiverr' || gig.platform === 'Upwork' || gig.platform === '99designs') && (
+                    <div className="bg-white border rounded p-4 shadow-sm">
+                      <pre className="text-gray-800 text-sm whitespace-pre-wrap">{JSON.stringify(gig.platform_specific_fields, null, 2)}</pre>
+                    </div>
+                  )}
+                </div>
+              )}
               <button
-                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition font-semibold"
+                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition font-semibold mt-2"
                 onClick={() => handleCopy(`${gig.title}\n${gig.description}\nPricing: ${gig.pricing}`)}
               >Copy to Clipboard</button>
             </div>
