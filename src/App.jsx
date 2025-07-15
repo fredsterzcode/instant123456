@@ -23,7 +23,7 @@ function Layout({ children }) {
           <Link to="/privacy" className="hover:underline">Privacy</Link>
         </nav>
       </header>
-      <main className="flex-1 container mx-auto p-4 w-full max-w-4xl">{children}</main>
+      <main className="flex-1 w-full px-4">{children}</main>
       <footer className="bg-white text-center p-4 border-t text-sm text-gray-500">© {new Date().getFullYear()} InstantList.ai</footer>
     </div>
   );
