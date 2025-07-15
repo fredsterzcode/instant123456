@@ -24,7 +24,6 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
     setToast(null);
-    // Simulate sending (no backend for contact yet)
     setTimeout(() => {
       setLoading(false);
       setForm({ name: '', email: '', message: '' });
@@ -33,8 +32,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 py-16 px-4 flex flex-col items-center">
-      <div className="max-w-xl w-full bg-white rounded-xl shadow-lg p-8">
+    <div className="w-full min-h-screen bg-gradient-to-b from-white to-blue-50 py-16 px-4 flex flex-col items-center">
+      <div className="w-full bg-white rounded-xl shadow-lg p-8">
         <h1 className="text-3xl font-extrabold mb-4 text-gray-900 text-center">Contact Us</h1>
         <p className="text-center text-gray-600 mb-8">Have a question, feedback, or need help? Fill out the form below or reach us directly.</p>
         <form onSubmit={handleSubmit} className="space-y-4">

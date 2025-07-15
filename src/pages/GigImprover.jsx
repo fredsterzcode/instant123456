@@ -70,7 +70,7 @@ export default function GigImprover() {
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-white to-blue-50 py-12 px-2 md:px-0 flex flex-col items-center">
-      <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg p-8 mb-10">
+      <div className="w-full bg-white rounded-xl shadow-lg p-8 mb-10">
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Improve Your Existing Gig</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -98,7 +98,7 @@ export default function GigImprover() {
       </div>
       {loading && <div className="flex justify-center my-8"><div className="animate-spin rounded-full h-12 w-12 border-t-4 border-indigo-600 border-opacity-50"></div></div>}
       {improved && (
-        <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-8">
+        <div className="w-full bg-white rounded-xl shadow-lg p-8">
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-1">
               <h3 className="text-lg font-bold mb-2 text-gray-700">Original</h3>

@@ -43,10 +43,10 @@ const PLANS = [
 
 export default function Pricing() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 py-16 px-4">
+    <div className="w-full min-h-screen bg-gradient-to-b from-white to-blue-50 py-16 px-4">
       <h1 className="text-3xl md:text-4xl font-extrabold text-center mb-4 text-gray-900">Simple, Transparent Pricing</h1>
       <p className="text-center text-lg text-gray-600 mb-12">Choose the plan that fits your freelance journey. Upgrade or downgrade anytime.</p>
-      <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
+      <div className="w-full grid md:grid-cols-3 gap-8">
         {PLANS.map(plan => (
           <div key={plan.name} className={`rounded-xl shadow-lg bg-white p-8 flex flex-col items-center border-2 ${plan.highlight ? 'border-indigo-600 scale-105 z-10' : 'border-gray-200'} transition`}> 
             <h2 className="text-xl font-bold mb-2">{plan.name}</h2>

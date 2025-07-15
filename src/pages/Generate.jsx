@@ -69,7 +69,7 @@ export default function Generate() {
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-white to-blue-50 py-12 px-2 md:px-0 flex flex-col items-center">
-      <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg p-8 mb-10">
+      <div className="w-full bg-white rounded-xl shadow-lg p-8 mb-10">
         <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Generate Your Gig Listings</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -109,7 +109,7 @@ export default function Generate() {
       </div>
       {loading && <div className="flex justify-center my-8"><div className="animate-spin rounded-full h-12 w-12 border-t-4 border-indigo-600 border-opacity-50"></div></div>}
       {results.length > 0 && (
-        <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg p-8">
+        <div className="w-full bg-white rounded-xl shadow-lg p-8">
           <div className="flex flex-wrap gap-2 mb-6 justify-center">
             {PLATFORMS.map(platform => (
               <button
