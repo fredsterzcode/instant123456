@@ -69,44 +69,46 @@ export default function GigImprover() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-center">Improve Your Existing Gig</h2>
-      <form onSubmit={handleSubmit} className="bg-white rounded shadow p-6 space-y-4 mb-8">
-        <div>
-          <label className="block font-medium mb-1">Paste Your Existing Gig</label>
-          <textarea name="gig" value={form.gig} onChange={handleChange} required rows={6} className="w-full border rounded px-3 py-2" />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="w-full min-h-screen bg-gradient-to-b from-white to-blue-50 py-12 px-2 md:px-0 flex flex-col items-center">
+      <div className="w-full max-w-3xl bg-white rounded-xl shadow-lg p-8 mb-10">
+        <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">Improve Your Existing Gig</h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block font-medium mb-1">Platform</label>
-            <select name="platform" value={form.platform} onChange={handleChange} className="w-full border rounded px-3 py-2">
-              {PLATFORMS.map(p => <option key={p}>{p}</option>)}
-            </select>
+            <label className="block font-medium mb-1">Paste Your Existing Gig</label>
+            <textarea name="gig" value={form.gig} onChange={handleChange} required rows={6} className="w-full border rounded px-3 py-2" />
           </div>
-          <div>
-            <label className="block font-medium mb-1">Improvement Type</label>
-            <select name="improvement" value={form.improvement} onChange={handleChange} className="w-full border rounded px-3 py-2">
-              {IMPROVEMENTS.map(i => <option key={i}>{i}</option>)}
-            </select>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block font-medium mb-1">Platform</label>
+              <select name="platform" value={form.platform} onChange={handleChange} className="w-full border rounded px-3 py-2">
+                {PLATFORMS.map(p => <option key={p}>{p}</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="block font-medium mb-1">Improvement Type</label>
+              <select name="improvement" value={form.improvement} onChange={handleChange} className="w-full border rounded px-3 py-2">
+                {IMPROVEMENTS.map(i => <option key={i}>{i}</option>)}
+              </select>
+            </div>
           </div>
-        </div>
-        <button type="submit" className="w-full py-3 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-700 transition disabled:opacity-50" disabled={loading}>
-          {loading ? 'Improving...' : 'Improve My Gig'}
-        </button>
-      </form>
+          <button type="submit" className="w-full py-3 bg-indigo-600 text-white font-semibold rounded hover:bg-indigo-700 transition disabled:opacity-50" disabled={loading}>
+            {loading ? 'Improving...' : 'Improve My Gig'}
+          </button>
+        </form>
+      </div>
       {loading && <div className="flex justify-center my-8"><div className="animate-spin rounded-full h-12 w-12 border-t-4 border-indigo-600 border-opacity-50"></div></div>}
       {improved && (
-        <div className="bg-white rounded shadow p-6">
-          <div className="flex flex-col md:flex-row gap-6">
+        <div className="w-full max-w-4xl bg-white rounded-xl shadow-lg p-8">
+          <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-1">
-              <h3 className="text-lg font-bold mb-2">Original</h3>
-              <pre className="bg-gray-100 rounded p-3 whitespace-pre-wrap mb-2">{form.gig}</pre>
-              <button className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition" onClick={() => handleCopy(form.gig)}>Copy</button>
+              <h3 className="text-lg font-bold mb-2 text-gray-700">Original</h3>
+              <pre className="bg-gray-100 rounded p-4 whitespace-pre-wrap mb-2 text-gray-800 text-base min-h-[120px]">{form.gig}</pre>
+              <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition font-semibold" onClick={() => handleCopy(form.gig)}>Copy</button>
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-bold mb-2">Improved</h3>
-              <pre className="bg-gray-100 rounded p-3 whitespace-pre-wrap mb-2">{improved}</pre>
-              <button className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600 transition" onClick={() => handleCopy(improved)}>Copy</button>
+              <h3 className="text-lg font-bold mb-2 text-indigo-700">Improved</h3>
+              <pre className="bg-gray-100 rounded p-4 whitespace-pre-wrap mb-2 text-gray-800 text-base min-h-[120px]">{improved}</pre>
+              <button className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition font-semibold" onClick={() => handleCopy(improved)}>Copy</button>
             </div>
           </div>
         </div>
